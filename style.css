@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+body {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    font-family: "Open Sans", sans-serif;;
+}
+
+/* header stuff */
+#header {
+    text-align: center;
+}
+
+#header-title {
+    margin-top: 5px;
+    margin-bottom: 0px;
+
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#header-description {
+    font-size: 12px;
+    margin-top: 0px;
+}
+
+/* actual chatroom */
+#message-box {
+    background-color: rgb(25, 25, 25);
+    border-radius: 10px;
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 1000px;
+    height: 500px;
+}
+
+#message-list {
+    /* background-color: rgb(1, 1, 1); */
+    overflow: auto;
+
+    width: 1;
+    height: 82.5%;
+
+    padding: 10px;
+}
+
+#input-box {
+    position: absolute;
+    border-radius: 25px;
+
+    left: 50%;
+    top: 98.5%;
+    transform: translate(-50%, -100%);
+    
+    background-color: rgb(15, 15, 15);
+    color: white;
+
+    border: none;
+    
+    text-indent: 10px;
+    font-size: 20px;
+    
+    width: 98%;
+    height: 10.5%;
+}
+
+#input-box:focus {
+    outline: 1px solid darkgray;
+}
+
+.message {
+    font-size: 20px;
+}
+
+.message-author {
+    font-weight: bold;
+}
+
+.message-content {
+    margin-left: 20px;
+}

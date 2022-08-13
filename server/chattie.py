@@ -12,9 +12,6 @@ class Message:
     author: str
     content: str
 
-    def __str__(self) -> str:
-        return f"<{self.author}>: {self.content}"
-    
     @classmethod
     def from_dict(cls, data: dict) -> Message:
         return cls(**data)
@@ -43,7 +40,7 @@ class Server:
             else:
                 websockets.broadcast(self.websockets, msgpack.dumps([message]))
 
-            logging.info(str(message))
+            logging.info(f"<{message['author']}>: {message['content']}")
             
             self.messages.append(Message.from_dict(message))
 

@@ -1,20 +1,3 @@
-const messages = document.getElementById("message-list");
-const inputBox = document.getElementById("input-box");
-const params = new URLSearchParams(window.location.search);
-
-let ip = params.has("ip") ? params.get("ip") : prompt("Please enter the IP address of a server:");
-let name = params.has("name") ? params.get("name") : prompt("Please enter your username:");
-
-if (ip.startsWith("https://") || ip.startsWith("https://")) {
-    const protocol = "wss://";
-} else {
-    const protocol = "ws://";
-}
-
-ip = protocol + ip.slice(ip.indexOf("/") + 1);
-
-const socket = new WebSocket(ip);
-
 function createMessageElement(message) {
     let element = document.createElement("div");
     element.className = "message";
@@ -24,6 +7,22 @@ function createMessageElement(message) {
 
     messages.appendChild(element);
 }
+
+const messages = document.getElementById("message-list");
+const inputBox = document.getElementById("input-box");
+const params = new URLSearchParams(window.location.search);
+
+let ip = params.has("ip") ? params.get("ip") : prompt("Please enter the IP address of a server:");
+let name = params.has("name") ? params.get("name") : prompt("Please enter your username:");
+let protocol = "ws://";
+
+if (ip.startsWith("https://") || ip.startsWith("wss://")) {
+    protocol = "wss://";
+}
+
+ip = protocol + ip.slice(ip.indexOf("/") + 2);
+
+const socket = new WebSocket(ip);
 
 inputBox.addEventListener("keydown", (event) => {
     if (event.key != "Enter") {
